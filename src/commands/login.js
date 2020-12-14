@@ -116,8 +116,6 @@ LoginCommand.description = `
 `
 
 LoginCommand.flags = {
-  username: flags.string({char: 'u', description: 'Udemy username'}),
-  password: flags.string({char: 'p', description: 'Udemy password'}),
   accesstoken: flags.string({char: 'a', description: 'Access token'}),
   clientid: flags.string({char: 'c', description: 'Client ID'}),
   output: flags.string({char: 'o', description: 'Output directory where the videos will be save, defaults to current directory'}),
