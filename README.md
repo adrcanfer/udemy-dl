@@ -78,13 +78,14 @@ USAGE
   $ udl login
 
 OPTIONS
+  -a --accesstoken         Access Token
+  -c --clientid            Client ID
   -b, --business=business  Business name, in case of Udemy for Business
   -e, --export             Export the course data as json with links
   -o, --output=output      Output directory where the videos will be save, defaults to current directory
   -p, --password=password  Udemy password
   -r, --url=url            Url of the couse to be downloaded
-  -u, --username=username  Udemy username
-
+  
 DESCRIPTION
   >Login to udemy.com and displays a list of courses to download.
 ```
