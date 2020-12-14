@@ -13,14 +13,14 @@ class LoginCommand extends Base {
     } else {
       business = flags.business || this.pref.account.business
     }
-    const username = flags.username || this.pref.account.username || await this.cli.prompt('Enter your Udemy username')
-    const password = flags.password || this.pref.account.password || await this.cli.prompt('Enter your password', {type: 'hide'})
+    const username = flags.accesstoken || this.pref.account.accesstoken || await this.cli.prompt('Enter your Access Token')
+    const password = flags.clientid || this.pref.account.clientid || await this.cli.prompt('Enter your Client Id')
 
 
     this.cli.action.start('Authencating'.green)
 
     try{
-      const {access_token,client_id} = await this.core.login(username,password,business);
+      const {access_token,client_id} = this.core.login(username,password,business);
        this.pref.account = {
         access_token,
         client_id,
@@ -118,6 +118,8 @@ LoginCommand.description = `
 LoginCommand.flags = {
   username: flags.string({char: 'u', description: 'Udemy username'}),
   password: flags.string({char: 'p', description: 'Udemy password'}),
+  accesstoken: flags.string({char: 'a', description: 'Access token'}),
+  clientid: flags.string({char: 'c', description: 'Client ID'}),
   output: flags.string({char: 'o', description: 'Output directory where the videos will be save, defaults to current directory'}),
   export: flags.boolean({char: 'e', description: 'Export the course data as json with links'}),
   url: flags.string({char: 'r', description: 'Url of the couse to be downloaded'}),

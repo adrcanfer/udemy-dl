@@ -20,6 +20,7 @@ _.forEach(session.headers, function(value, key) {
   agent.set(key, value);
 });
 
+/*
 const login = function(username, password, business) {
   if (!_.isEmpty(business)) {
     HOST = HOST.replace("www", business);
@@ -75,7 +76,19 @@ const login = function(username, password, business) {
         reject(r);
       });
   });
-};
+}; */
+
+const login = function (access_token, client_id, business) {
+  if (!_.isEmpty(business)) {
+    HOST = HOST.replace("www", business);
+  }
+  session.set_auth_headers(HOST, access_token, client_id);
+
+    return {
+      access_token,
+      client_id
+    }
+}
 
 const getCourseList = async function() {
   const get_url = `${HOST}/api-2.0/users/me/subscribed-courses?page_size=500`;
